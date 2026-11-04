@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.Nexus" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/nexus_cyan</item>
+        <item name="colorPrimaryDark">@color/nexus_bg</item>
+        <item name="colorAccent">@color/nexus_violet</item>
+        <item name="android:windowBackground">@color/nexus_bg</item>
+    </style>
+</resources>

@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nexus_bg"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dispositivos (HTTP)"
+        android:textColor="@color/nexus_cyan"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compatível com tomadas/relés que aceitem comandos HTTP (ex: Tasmota, ESPHome). Toque e segure para remover."
+        android:textColor="@color/nexus_dim"
+        android:textSize="12sp"
+        android:layout_marginBottom="16dp"/>
+
+    <ListView
+        android:id="@+id/listDevices"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btnAddDevice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+ Adicionar dispositivo"/>
+
+</LinearLayout>

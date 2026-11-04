@@ -1,0 +1,9 @@
+<resources>
+    <color name="nexus_bg">#060B18</color>
+    <color name="nexus_panel">#0C1526</color>
+    <color name="nexus_cyan">#4FD8FF</color>
+    <color name="nexus_violet">#B388FF</color>
+    <color name="nexus_pink">#FF5CA8</color>
+    <color name="nexus_text">#E6F1FF</color>
+    <color name="nexus_dim">#7792B5</color>
+</resources>
