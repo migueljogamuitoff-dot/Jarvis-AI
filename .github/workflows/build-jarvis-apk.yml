@@ -1,4 +1,4 @@
-name: Build Nexus APK
+name: Build Jarvis APK
 
 on:
   workflow_dispatch:
@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Baixar projeto
         uses: actions/checkout@v4
@@ -19,10 +18,12 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Preparar Android
-        uses: android-actions/setup-android@v3
+      - name: Preparar Android SDK
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
-      - name: Extrair Nexus
+      - name: Extrair projeto
         run: |
           unzip -o NexusAI-GitHub-upload.zip -d /tmp/nexus
           cp -R /tmp/nexus/. .
@@ -38,5 +39,5 @@ jobs:
       - name: Disponibilizar APK
         uses: actions/upload-artifact@v4
         with:
-          name: Nexus-APK
+          name: Jarvis-APK
           path: app/build/outputs/apk/debug/app-debug.apk
