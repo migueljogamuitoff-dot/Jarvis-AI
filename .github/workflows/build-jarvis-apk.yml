@@ -3,11 +3,13 @@ name: Build Jarvis APK
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Baixar projeto
         uses: actions/checkout@v4
@@ -21,7 +23,7 @@ jobs:
       - name: Instalar Android SDK
         run: |
           mkdir -p "$HOME/android-sdk/cmdline-tools"
-          curl -L "https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip" -o sdk.zip
+          curl -fL "https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip" -o sdk.zip
           unzip -q sdk.zip -d "$HOME/android-sdk/cmdline-tools"
           mkdir -p "$HOME/android-sdk/cmdline-tools/latest"
           mv "$HOME/android-sdk/cmdline-tools/cmdline-tools/"* "$HOME/android-sdk/cmdline-tools/latest/"
@@ -35,6 +37,7 @@ jobs:
         run: |
           unzip -o NexusAI-GitHub-upload.zip -d /tmp/nexus
           cp -R /tmp/nexus/. .
+          sed -i 's/private static String extractText(JSONArray content) {/private static String extractText(JSONArray content) throws Exception {/' app/src/main/java/com/seuprojeto/nexus/AiClient.java
 
       - name: Instalar Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -49,3 +52,4 @@ jobs:
         with:
           name: Jarvis-APK
           path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
